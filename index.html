@@ -1,355 +1,81 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>متجر خالد — موقعك المتكامل</title>
-  <meta name="description" content="موقع متجر عربي متكامل مع تسجيل الدخول، حساب المستخدم، سلة شراء، إدارة منتجات، وصفحات أساسية." />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجر خالد 🛍️</title>
   <style>
-    body{margin:0;font-family:'Cairo', sans-serif;background:#0b1020;color:#fff}
-    header,footer{background:#111832;padding:1rem;text-align:center}
-    a{color:#9cffd1;text-decoration:none}
-    nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
-    .container{width:min(1200px,92%);margin:auto}
-    .btn{padding:.7rem 1rem;border-radius:10px;cursor:pointer;border:none}
-    .btn-sm{padding:.35rem .6rem;font-size:.9rem;border-radius:8px}
-    .btn-primary{background:#6aa7ff;color:#05121e;font-weight:700}
-    .form-card{max-width:420px;margin:2rem auto;background:#1d2b57;padding:1.5rem;border-radius:14px}
-    input,textarea,select{width:100%;padding:.8rem;margin:.4rem 0;border-radius:8px;border:1px solid #ccc}
-    h1,h2,h3{margin:.5rem 0}
-    .hero{padding:2rem;text-align:center}
-    .hidden{display:none}
-    .card{background:#1d2b57;padding:1rem;border-radius:10px;margin:.6rem 0}
-    .prod-img{width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:.5rem}
-    .muted{opacity:.85;font-size:.92rem}
-    .grid{display:grid;gap:1rem}
-    .grid-2{grid-template-columns:1fr 1fr}
+    body {font-family: Tahoma, sans-serif; margin:0; background:#0d1117; color:#fff;}
+    header {background:#161b22; padding:15px; text-align:center;}
+    header a {color:#58a6ff; margin:0 10px; text-decoration:none;}
+    .container {padding:20px;}
+    h1,h2 {color:#facc15;}
+    .product {background:#161b22; padding:15px; border-radius:10px; margin:10px 0;}
+    footer {background:#161b22; text-align:center; padding:15px; margin-top:20px;}
+    input,textarea {width:100%; padding:10px; margin:5px 0; border-radius:5px; border:none;}
+    button {background:#2563eb; color:#fff; border:none; padding:10px 15px; border-radius:8px; cursor:pointer;}
+    button:hover {background:#1d4ed8;}
   </style>
 </head>
 <body>
   <header>
-    <div class="container">
-      <nav>
-        <strong style="font-size:1.3rem">🛍️ متجر خالد</strong>
-        <div>
-          <a href="#shop">المنتجات</a> | 
-          <a href="#login">تسجيل الدخول</a> | 
-          <a href="#signup">إنشاء حساب</a> | 
-          <a href="#profile" id="profile-link" class="hidden">حسابي</a> |
-          <a href="#cart">السلة</a> | 
-          <a href="#privacy">سياسة الخصوصية</a> |
-          <a href="#terms">الشروط</a> |
-          <a href="#admin" id="admin-link" class="hidden">لوحة الإدارة</a>
-        </div>
-      </nav>
-    </div>
-  </header>  <section class="hero">
-    <h1>مرحبا بك في <span style="color:#ffd166">متجر خالد</span></h1>
-    <p>موقع متكامل لعرض منتجاتك وبيعها عبر الإنترنت مع تسجيل الدخول، سلة شراء، حساب شخصي، ولوحة إدارة.</p>
-    <a class="btn btn-primary" href="#shop">تسوّق الآن</a>
-  </section>  <section id="shop" class="container">
-    <h2>🛒 المنتجات</h2>
-    <div id="products" class="grid grid-2"></div>
-  </section>  <section id="cart" class="container hidden">
-    <h2>سلة الشراء</h2>
-    <div id="cart-items"></div>
-    <p><b>المجموع:</b> <span id="cart-total">0 دج</span></p><div class="form-card">
-  <h3>معلومات الزبون</h3>
-  <input id="cust-name" placeholder="الاسم الكامل">
-  <input id="cust-phone" placeholder="رقم الهاتف">
-  <textarea id="cust-addr" placeholder="العنوان (الحي - البلدية - الولاية)"></textarea>
-</div>
+    <h1>متجر خالد 🛍️</h1>
+    <nav>
+      <a href="#home">الرئيسية</a> |
+      <a href="#products">المنتجات</a> |
+      <a href="#about">عن المتجر</a> |
+      <a href="#contact">اتصل بنا</a>
+    </nav>
+  </header>
 
-<button id="checkout" class="btn btn-primary">تأكيد الطلب</button>
-<button id="send-wa" class="btn">إرسال عبر واتساب</button>
-<button id="send-mail" class="btn">إرسال عبر البريد</button>
+  <div class="container" id="home">
+    <h2>مرحبا بك 👋</h2>
+    <p>أهلا بك في متجر خالد، مكانك المثالي للتسوق عبر الإنترنت.</p>
+  </div>
 
-  </section>  <section id="login" class="container">
-    <h2>🔑 تسجيل الدخول</h2>
-    <div class="form-card">
-      <form id="login-form">
-        <label>البريد الإلكتروني</label>
-        <input id="login-email" type="email" required>
-        <label>كلمة المرور</label>
-        <input id="login-pass" type="password" required>
-        <button type="submit" class="btn btn-primary" style="width:100%">تسجيل الدخول</button>
-        <p id="login-msg" style="color:#ffd166"></p>
-      </form>
-    </div>
-  </section>  <section id="signup" class="container">
-    <h2>📝 إنشاء حساب جديد</h2>
-    <div class="form-card">
-      <form id="signup-form">
-        <label>الاسم الكامل</label>
-        <input id="signup-name" type="text" required>
-        <label>البريد الإلكتروني</label>
-        <input id="signup-email" type="email" required>
-        <label>كلمة المرور</label>
-        <input id="signup-pass" type="password" required>
-        <button type="submit" class="btn btn-primary" style="width:100%">إنشاء حساب</button>
-        <p id="signup-msg" style="color:#ffd166"></p>
-      </form>
-    </div>
-  </section>  <section id="profile" class="container hidden">
-    <h2>👤 حسابي</h2>
-    <div class="form-card">
-      <p><b>الاسم:</b> <span id="prof-name"></span></p>
-      <p><b>البريد:</b> <span id="prof-email"></span></p>
-      <div id="my-orders"></div>
-      <button id="logout" class="btn btn-primary">تسجيل الخروج</button>
-    </div>
-  </section>  <section id="admin" class="container hidden">
-    <h2>📦 لوحة الإدارة</h2>
-    <div class="grid grid-2">
-      <div class="card">
-        <h3>إضافة منتج</h3>
-        <input id="adm-name" placeholder="اسم المنتج">
-        <input id="adm-price" placeholder="السعر بالدج" type="number">
-        <button id="adm-add" class="btn btn-primary">إضافة</button>
-      </div>
-      <div class="card">
-        <h3>جميع الطلبات</h3>
-        <div id="adm-orders"></div>
-      </div>
-    </div>
-  </section>  <section id="privacy" class="container hidden">
-    <h2>🔒 سياسة الخصوصية</h2>
-    <div class="card">
-      <p>نحن في <b>متجر خالد</b> نلتزم بحماية خصوصية بياناتك. جميع بياناتك (الحساب، السلة، الطلبات) يتم حفظها محليًا على جهازك فقط. لن يتم مشاركتها مع أي طرف ثالث.</p>
-      <ul>
-        <li>يمكنك حذف بياناتك عبر مسح ذاكرة المتصفح.</li>
-        <li>عند الانتقال إلى نسخة خادم، سنوضح بجلاء مكان تخزين البيانات وكيفية إدارتها.</li>
-      </ul>
-    </div>
-  </section>  <section id="terms" class="container hidden">
-    <h2>📜 الشروط والأحكام</h2>
-    <div class="card">
-      <ul>
-        <li>هذا الموقع نسخة تجريبية محلية.</li>
-        <li>الأسعار المعروضة قابلة للتغيير وتأكيدها يتم عبر التواصل المباشر (واتساب أو بريد).</li>
-        <li>يمكنك استرجاع أو استبدال المنتجات خلال 7 أيام بشرط أن تكون غير مستعملة.</li>
-      </ul>
-      <p>المالك: <b>خالد</b></p>
-    </div>
-  </section>  <footer>
-    <p>© <span id="year"></span> متجر خالد. جميع الحقوق محفوظة.</p>
-  </footer>  <script>
-    // سنة الفوتر
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <div class="container" id="products">
+    <h2>المنتجات</h2>
+    <div class="product">⌚ ساعة ذكية - 3500 دج</div>
+    <div class="product">🎧 سماعات بلوتوث - 2500 دج</div>
+    <div class="product">👕 قميص قطني - 1500 دج</div>
+  </div>
 
-    // مفاتيح التخزين المحلي
-    const USERS_KEY='users';
-    const AUTH_KEY='auth';
-    const PRODUCTS_KEY='products';
-    const CART_KEY='cart';
-    const ORDERS_KEY='orders';
-    const OWNER_EMAIL='owner@khaled.dz'; // ✏️ غيّر هذا البريد إلى بريدك الإداري
+  <div class="container" id="about">
+    <h2>عن المتجر</h2>
+    <p>متجر خالد يقدم أفضل المنتجات بأسعار مناسبة مع خدمة عملاء ممتازة. هدفنا هو توفير تجربة تسوق ممتعة وآمنة لزبائننا.</p>
+  </div>
 
-    // دوال مساعدة للتخزين
-    const get = k => JSON.parse(localStorage.getItem(k)||'[]');
-    const set = (k,v) => localStorage.setItem(k,JSON.stringify(v));
-    const getAuth = () => JSON.parse(localStorage.getItem(AUTH_KEY)||'null');
-    const setAuth = a => localStorage.setItem(AUTH_KEY,JSON.stringify(a));
+  <div class="container" id="contact">
+    <h2>اتصل بنا</h2>
+    <form onsubmit="sendMessage(event)">
+      <input type="text" id="name" placeholder="اسمك" required>
+      <input type="email" id="email" placeholder="بريدك الإلكتروني" required>
+      <textarea id="message" placeholder="رسالتك" required></textarea>
+      <button type="submit">إرسال</button>
+    </form>
+    <br>
+    <button onclick="sendWhatsApp()">📱 راسلنا على واتساب</button>
+    <button onclick="sendEmail()">📧 أرسل بريد</button>
+  </div>
 
-    // مصادقة وعرض
-    function renderAuth(){
-      const u=getAuth();
-      if(u){
-        document.getElementById('profile').classList.remove('hidden');
-        document.getElementById('profile-link').classList.remove('hidden');
-        if(u.email===OWNER_EMAIL) document.getElementById('admin-link').classList.remove('hidden');
-        document.getElementById('login').classList.add('hidden');
-        document.getElementById('signup').classList.add('hidden');
-        document.getElementById('prof-name').textContent=u.name;
-        document.getElementById('prof-email').textContent=u.email;
-        renderOrders();
-      } else {
-        document.getElementById('profile').classList.add('hidden');
-        document.getElementById('profile-link').classList.add('hidden');
-        document.getElementById('admin-link').classList.add('hidden');
-        document.getElementById('login').classList.remove('hidden');
-        document.getElementById('signup').classList.remove('hidden');
-      }
-    }
+  <footer>
+    <p>جميع الحقوق محفوظة © <span id="year"></span> متجر خالد</p>
+  </footer>
 
-    // تسجيل
-    document.getElementById('signup-form').addEventListener('submit',e=>{
-      e.preventDefault();
-      const name=document.getElementById('signup-name').value.trim();
-      const email=document.getElementById('signup-email').value.trim();
-      const pass=document.getElementById('signup-pass').value;
-      let users=get(USERS_KEY);
-      if(users.find(u=>u.email===email)){document.getElementById('signup-msg').textContent='الحساب موجود مسبقًا';return;}
-      const newUser={name,email,pass,role: email===OWNER_EMAIL?'admin':'user'};
-      users.push(newUser); set(USERS_KEY,users); setAuth(newUser); renderAuth(); location.hash='#profile';
-    });
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    // دخول
-    document.getElementById('login-form').addEventListener('submit',e=>{
-      e.preventDefault();
-      const email=document.getElementById('login-email').value.trim();
-      const pass=document.getElementById('login-pass').value;
-      const u=get(USERS_KEY).find(x=>x.email===email&&x.pass===pass);
-      if(u){ setAuth(u); renderAuth(); location.hash='#profile'; }
-      else { document.getElementById('login-msg').textContent='بيانات غير صحيحة'; }
-    });
-
-    // خروج
-    document.getElementById('logout').addEventListener('click',()=>{ localStorage.removeItem(AUTH_KEY); renderAuth(); location.hash='#login'; });
-
-    // منتجات (مع Seed أولي إن كانت القائمة فارغة)
-    function renderProducts(){
-      let list=get(PRODUCTS_KEY);
-      if(!list.length){
-        // منتجات تجريبية بالصور والفئات
-        list=[
-          {name:'⌚ ساعة ذكية S9',price:12990,category:'إلكترونيات',img:'https://images.unsplash.com/photo-1516557070061-c3d1653fa646?q=80&w=1200&auto=format&fit=crop'},
-          {name:'🎧 سماعات لاسلكية',price:5990,category:'إلكترونيات',img:'https://images.unsplash.com/photo-1518449037150-6f6f2d1e4826?q=80&w=1200&auto=format&fit=crop'},
-          {name:'👕 تيشيرت قطني 230G',price:3490,category:'أزياء',img:'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop'},
-          {name:'🎒 حقيبة ظهر مقاومة',price:8990,category:'أزياء',img:'https://images.unsplash.com/photo-1514477917009-389c76a86b68?q=80&w=1200&auto=format&fit=crop'},
-          {name:'💡 مصباح مكتب LED',price:4490,category:'منزل',img:'https://images.unsplash.com/photo-1517059224940-d4af9eec41e5?q=80&w=1200&auto=format&fit=crop'}
-        ];
-        set(PRODUCTS_KEY,list);
-      }
-      const wrap=document.getElementById('products');
-      wrap.innerHTML='';
-      list.forEach((p,i)=>{
-        const d=document.createElement('div'); d.className='card';
-        const price = parseInt(p.price)||0;
-        const img = p.img ? `<img class="prod-img" alt="${p.name}" src="${p.img}">` : '';
-        const cat = p.category ? `<div class='muted'>${p.category}</div>` : '';
-        d.innerHTML=`${img}<b>${p.name}</b>${cat}<div style="margin:.25rem 0 .5rem"><b>${price.toLocaleString('ar-DZ')}</b> دج</div>
-          <button onclick=\"addToCart(${i})\" class=\"btn btn-primary\">أضف للسلة</button>`;
-        wrap.appendChild(d);
-      });
-    }
-
-    // إضافة منتج من لوحة الإدارة
-    document.getElementById('adm-add').addEventListener('click',()=>{
-      const name=document.getElementById('adm-name').value.trim();
-      const price=parseInt(document.getElementById('adm-price').value||'0',10);
-      if(!name||!price) return;
-      let list=get(PRODUCTS_KEY); list.push({name,price}); set(PRODUCTS_KEY,list); renderProducts(); alert('تمت إضافة المنتج');
-    });
-
-    // سلة
-    function addToCart(i){ let list=get(PRODUCTS_KEY); let cart=get(CART_KEY); const p=list[i]; cart.push(p); set(CART_KEY,cart); renderCart(); location.hash='#cart'; }
-    function renderCart(){
-      const cart=get(CART_KEY);
-      const wrap=document.getElementById('cart-items'); wrap.innerHTML='';
-      let total=0; cart.forEach((c)=>{ total+=parseInt(c.price)||0; wrap.innerHTML+=`<div class='card'>${c.name} - ${c.price} دج</div>`; });
-      document.getElementById('cart-total').textContent= total.toLocaleString('ar-DZ')+' دج';
-    }
-
-    // تأكيد الطلب
-    document.getElementById('checkout').addEventListener('click',()=>{
-      const auth=getAuth(); if(!auth){ alert('سجل الدخول أولا'); location.hash='#login'; return; }
-      let cart=get(CART_KEY); if(!cart.length){ alert('السلة فارغة'); return; }
-      let orders=get(ORDERS_KEY);
-      const order={
-        user:auth.email,
-        items:cart,
-        date:new Date().toLocaleString('ar-DZ'),
-        name:document.getElementById('cust-name').value,
-        phone:document.getElementById('cust-phone').value,
-        addr:document.getElementById('cust-addr').value,
-        status:'قيد المعالجة'
-      };
-      orders.push(order); set(ORDERS_KEY,orders); set(CART_KEY,[]);
-      alert('تم تأكيد الطلب'); renderCart(); renderOrders(); location.hash='#profile';
-    });
-
-    // إرسال عبر واتساب
-    document.getElementById('send-wa').addEventListener('click',()=>{
-      let cart=get(CART_KEY);
-      if(!cart.length){alert('السلة فارغة');return;}
-      let msg='طلب جديد:%0A';
-      cart.forEach(c=>{msg+=`- ${c.name} (${c.price} دج)%0A`;});
-      msg+=`المجموع: ${document.getElementById('cart-total').textContent}%0A`;
-      msg+=`الاسم: ${document.getElementById('cust-name').value}%0A`;
-      msg+=`الهاتف: ${document.getElementById('cust-phone').value}%0A`;
-      msg+=`العنوان: ${document.getElementById('cust-addr').value}`;
-      const phone='213555000000'; // ✏️ ضع رقم الواتساب هنا
-      window.open(`https://wa.me/${phone}?text=${msg}`,'_blank');
-    });
-
-    // إرسال عبر البريد
-    document.getElementById('send-mail').addEventListener('click',()=>{
-      let cart=get(CART_KEY);
-      if(!cart.length){alert('السلة فارغة');return;}
-      let body='طلب جديد:%0A';
-      cart.forEach(c=>{body+=`- ${c.name} (${c.price} دج)%0A`;});
-      body+=`المجموع: ${document.getElementById('cart-total').textContent}%0A`;
-      body+=`الاسم: ${document.getElementById('cust-name').value}%0A`;
-      body+=`الهاتف: ${document.getElementById('cust-phone').value}%0A`;
-      body+=`العنوان: ${document.getElementById('cust-addr').value}`;
-      window.location.href=`mailto:orders@khaled.dz?subject=طلب جديد&body=${body}`;
-    });
-
-    // عرض الطلبات للمستخدم والإدمن
-    function renderOrders(){
-      const auth=getAuth(); if(!auth) return;
-      const orders=get(ORDERS_KEY).filter(o=>o.user===auth.email);
-      const wrap=document.getElementById('my-orders'); wrap.innerHTML='';
-      orders.forEach(o=>{
-        wrap.innerHTML+=`<div class='card'>طلب بتاريخ ${o.date} - ${o.items.length} منتجات<br>الحالة: <b>${o.status||'—'}</b><br>الاسم: ${o.name||''}, الهاتف: ${o.phone||''}</div>`
-      });
-      // Admin view with status controls
-      if(auth.email===OWNER_EMAIL){
-        const adm=document.getElementById('adm-orders'); adm.innerHTML='';
-        get(ORDERS_KEY).forEach((o,idx)=>{
-          adm.innerHTML+=`<div class='card'>
-            <div><b>${o.user}</b> — ${o.items.length} منتجات — ${o.date}</div>
-            <div>الحالة الحالية: <b>${o.status||'—'}</b></div>
-            <div style='margin-top:.4rem;display:flex;gap:.4rem;flex-wrap:wrap'>
-              <button class='btn btn-sm' onclick="setOrderStatus(${idx}, 'قيد المعالجة')">قيد المعالجة</button>
-              <button class='btn btn-sm' onclick="setOrderStatus(${idx}, 'في الطريق')">في الطريق</button>
-              <button class='btn btn-sm' onclick="setOrderStatus(${idx}, 'تم التسليم')">تم التسليم</button>
-              <button class='btn btn-sm' onclick="setOrderStatus(${idx}, 'ملغي')">ملغي</button>
-            </div>
-            <div class='muted'>الاسم: ${o.name||''}، الهاتف: ${o.phone||''}، العنوان: ${o.addr||''}</div>
-          </div>`
-        });
-      }
-    }
-
-    function setOrderStatus(index, status){
-      const auth=getAuth(); if(!auth || auth.email!==OWNER_EMAIL){ alert('للإدمن فقط'); return; }
-      let orders=get(ORDERS_KEY);
-      if(!orders[index]) return;
-      orders[index].status=status;
-      set(ORDERS_KEY,orders);
-      renderOrders();
-    }
-
-    // راوتر بسيط للتنقل بين الصفحات
-    const PAGES=['shop','cart','login','signup','profile','admin','privacy','terms'];
-    function route(){
-      const target=(location.hash||'#shop').replace('#','');
-      PAGES.forEach(id=>{
-        const el=document.getElementById(id);
-        if(!el) return;
-        if(id===target) el.classList.remove('hidden');
-        else {
-          // لا نخفي صفحات الدخول إذا المستخدم غير مسجل
-          if((id==='login' || id==='signup') && !getAuth()) return;
-          el.classList.add('hidden');
-        }
-      });
-      if(target==='cart') renderCart();
-      if(target==='admin' && getAuth()?.email!==OWNER_EMAIL){ alert('الدخول للمالك فقط'); location.hash='#login'; }
-    }
-    window.addEventListener('hashchange', route);
-
-    // تهيئة أولية للتخزين
-    if(!localStorage.getItem(CART_KEY)) set(CART_KEY,[]);
-    if(!localStorage.getItem(ORDERS_KEY)) set(ORDERS_KEY,[]);
-
-    // تشغيل أولي
-    renderAuth();
-    renderProducts();
-    renderCart();
-    renderOrders();
-    route();
-  </script></body>
-  </html>
+  function sendMessage(e){
+    e.preventDefault();
+    alert("✅ تم إرسال رسالتك بنجاح!");
+  }
+  function sendWhatsApp(){
+    let msg="السلام عليكم، أريد الاستفسار عن منتج.";
+    window.open("https://wa.me/213555555555?text="+encodeURIComponent(msg), "_blank");
+  }
+  function sendEmail(){
+    window.location.href="mailto:khaledking278@gmail.com?subject=استفسار&body=السلام عليكم،";
+  }
+</script>
+</body>
+</html>
